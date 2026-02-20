@@ -117,9 +117,8 @@ export const PROJECTS = [
       "A modern real estate listing and showcase platform with dynamic property views.",
     github: "https://github.com/UnrealA10/waman",
     live: "https://wamanhaus.com",
-    image:
-      "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80",
-    video: "https://www.w3schools.com/html/mov_bbb.mp4",
+    image: "./image/waman.png",
+    video: "./video/waman.mp4",
   },
   {
     category: "Automation Tool",
@@ -128,10 +127,9 @@ export const PROJECTS = [
     description:
       "Admin dashboard to manage and monitor Telegram bots with real-time controls.",
     github: "https://github.com/UnrealA10/bot-dashboard",
-    live: "#",
-    image:
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
-    video: "https://www.w3schools.com/html/mov_bbb.mp4",
+    live: "https://getaipilot.in/",
+    image: "./image/bot.png",
+    video: "./video/bot.mp4",
   },
   {
     category: "Sports Platform",
@@ -140,10 +138,9 @@ export const PROJECTS = [
     description:
       "Cricket management and scoring application for local leagues and tournaments.",
     github: "https://github.com/Unreala9/ankur-cricket",
-    live: "#",
-    image:
-      "https://images.unsplash.com/photo-1531415074968-036ba1b575da?w=800&q=80",
-    video: "https://www.w3schools.com/html/mov_bbb.mp4",
+    live: "https://steelblue-ram-975394.hostingersite.com/",
+    image: "./image/ankur.png",
+    video: "./video/ankur.mp4",
   },
   {
     category: "Fintech App",
@@ -152,10 +149,9 @@ export const PROJECTS = [
     description:
       "One-tap payment solution with streamlined UX and secure transaction flows.",
     github: "https://github.com/Unreala9/Onetapay-MetaProject",
-    live: "#",
-    image:
-      "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&q=80",
-    video: "https://www.w3schools.com/html/mov_bbb.mp4",
+    live: "https://onetapay.metabulluniverse.in/",
+    image: "./image/one.png",
+    video: "./video/one.mp4",
   },
   {
     category: "Education Platform",
@@ -165,9 +161,8 @@ export const PROJECTS = [
       "School management system with student portals, attendance, and result tracking.",
     github: "https://github.com/Unreala9/Mdb",
     live: "https://mdbschool.com",
-    image:
-      "https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=800&q=80",
-    video: "https://www.w3schools.com/html/mov_bbb.mp4",
+    image: "./image/mdb.png",
+    video: "./video/mdb.mp4",
   },
   {
     category: "CRM System",
@@ -176,10 +171,9 @@ export const PROJECTS = [
     description:
       "Customer relationship management platform built for the MetaBull Universe ecosystem.",
     github: "https://github.com/MetaBull-Universe/metabull-universe-crm-main",
-    live: "#",
-    image:
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
-    video: "https://www.w3schools.com/html/mov_bbb.mp4",
+    live: "https://team.metabulluniverse.com",
+    image: "./image/crm.png",
+    video: "./video/crm.mp4",
   },
   {
     category: "Dev Tool",
@@ -188,10 +182,9 @@ export const PROJECTS = [
     description:
       "Automation tool to spin up, manage, and deploy multiple landing pages efficiently.",
     github: "https://github.com/UnrealA10/landing-page-handler",
-    live: "#",
-    image:
-      "https://images.unsplash.com/photo-1547658719-da2b51169166?w=800&q=80",
-    video: "https://www.w3schools.com/html/mov_bbb.mp4",
+    live: "https://adsmint.site",
+    image: "./image/ads.png",
+    video: "./video/ads.mp4",
   },
 ];
 

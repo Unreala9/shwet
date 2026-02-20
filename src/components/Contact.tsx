@@ -13,14 +13,13 @@ import {
   Facebook,
 } from "lucide-react";
 
-
-
 const Contact = () => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -29,7 +28,9 @@ const Contact = () => {
     setError("");
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const formRef = useRef<HTMLFormElement>(null);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
       setError("All fields are required.");
@@ -40,8 +41,39 @@ const Contact = () => {
       setError("Please enter a valid email.");
       return;
     }
-    console.log("Contact form submitted:", form);
-    setSubmitted(true);
+
+    setIsSubmitting(true);
+    setError("");
+
+    try {
+      const response = await fetch(`https://formsubmit.co/ajax/${DEVELOPER.email}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          message: form.message,
+          _template: "box",
+          _subject: "New Portfolio Message!",
+        }),
+      });
+
+      const result = await response.json();
+
+      if (response.ok && result.success === "true") {
+        setSubmitted(true);
+        setForm({ name: "", email: "", message: "" });
+      } else {
+        setError("Something went wrong. Please try again.");
+      }
+    } catch (err) {
+      setError("Failed to send message. Please check your connection.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -141,6 +173,7 @@ const Contact = () => {
               </div>
             ) : (
               <form
+                ref={formRef}
                 onSubmit={handleSubmit}
                 className="glass-card p-6 space-y-4"
               >
@@ -206,21 +239,32 @@ const Contact = () => {
                 >
                   <motion.button
                     type="submit"
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
-                    className="btn-primary w-full flex items-center justify-center gap-2 group overflow-hidden relative shadow-[0_0_20px_rgba(255,255,255,0.0)] hover:shadow-[0_0_20px_rgba(255,255,255,0.1)] transition-all duration-300"
+                    disabled={isSubmitting}
+                    whileHover={{ scale: isSubmitting ? 1 : 1.02 }}
+                    whileTap={{ scale: isSubmitting ? 1 : 0.98 }}
+                    className={`btn-primary w-full flex items-center justify-center gap-2 group overflow-hidden relative shadow-[0_0_20px_rgba(255,255,255,0.0)] ${isSubmitting ? "opacity-70 cursor-not-allowed" : "hover:shadow-[0_0_20px_rgba(255,255,255,0.1)]"} transition-all duration-300`}
                   >
                     <span className="absolute inset-0 w-full h-full bg-white/20 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out" />
                     <motion.div
-                      animate={{ x: [0, 4, 0] }}
-                      transition={{ repeat: Infinity, duration: 1.5 }}
+                      animate={
+                        isSubmitting ? { rotate: 360 } : { x: [0, 4, 0] }
+                      }
+                      transition={
+                        isSubmitting
+                          ? { repeat: Infinity, duration: 1, ease: "linear" }
+                          : { repeat: Infinity, duration: 1.5 }
+                      }
                     >
-                      <Send
-                        size={15}
-                        className="group-hover:rotate-12 transition-transform duration-300"
-                      />
+                      {isSubmitting ? (
+                        <div className="w-4 h-4 border-2 border-white/80 border-t-transparent rounded-full" />
+                      ) : (
+                        <Send
+                          size={15}
+                          className="group-hover:rotate-12 transition-transform duration-300"
+                        />
+                      )}
                     </motion.div>
-                    Get a Quote
+                    {isSubmitting ? "Sending..." : "Get a Quote"}
                   </motion.button>
                 </motion.div>
               </form>

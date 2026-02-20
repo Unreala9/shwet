@@ -108,7 +108,7 @@ const ProjectCard = ({
         </div>
 
         {/* ── Right: Media Panel ── */}
-        <div className="relative w-full md:w-[320px] lg:w-[380px] shrink-0 overflow-hidden bg-black min-h-[200px] md:min-h-0 rounded-b-2xl md:rounded-r-2xl md:rounded-bl-none">
+        <div className="relative w-full md:w-[320px] lg:w-[600px] shrink-0 overflow-hidden bg-black min-h-[240px] md:min-h-0 rounded-b-2xl md:rounded-r-2xl md:rounded-bl-none">
           {/* Thumbnail */}
           <img
             src={project.image}
