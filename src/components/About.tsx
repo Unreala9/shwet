@@ -85,7 +85,7 @@ const About = () => {
             variants={staggerContainer}
             initial="hidden"
             animate={inView ? "visible" : "hidden"}
-            className="lg:col-span-3 grid gap-4"
+            className="lg:col-span-3 grid grid-cols-2 gap-4"
           >
             {ABOUT_ITEMS.map((item, i) => {
               const Icon = iconMap[item.icon] || Zap;

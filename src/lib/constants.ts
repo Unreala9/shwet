@@ -20,20 +20,68 @@ export const NAV_LINKS = [
 ];
 
 export const SOCIALS = [
-  { label: "GitHub", href: "https://github.com/Unreala9", icon: "github" },
   {
-    label: "LinkedIn",
-    href: "https://linkedin.com/in/ShwetChourey",
-    icon: "linkedin",
+    label: "GitHub",
+    href: "https://github.com/Unreala9",
+    icon: "github",
+    badge:
+      "https://img.shields.io/badge/GitHub-100000?logo=github&logoColor=white",
   },
-  { label: "X", href: "https://x.com/@shwetchourey1", icon: "twitter" },
+  {
+    label: "Facebook",
+    href: "https://facebook.com/Shwet Chourey",
+    icon: "facebook",
+    badge:
+      "https://img.shields.io/badge/Facebook-%231877F2.svg?logo=Facebook&logoColor=white",
+  },
   {
     label: "Instagram",
     href: "https://instagram.com/ii__shwet__ii",
     icon: "instagram",
+    badge:
+      "https://img.shields.io/badge/Instagram-%23E4405F.svg?logo=Instagram&logoColor=white",
   },
-  { label: "YouTube", href: "https://youtube.com/@UNREALA9", icon: "youtube" },
-  { label: "Email", href: "mailto:shwetchourey3@gmail.com", icon: "mail" },
+  {
+    label: "LinkedIn",
+    href: "https://linkedin.com/in/Shwet Chourey",
+    icon: "linkedin",
+    badge:
+      "https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white",
+  },
+  {
+    label: "Pinterest",
+    href: "https://pinterest.com/shwetchourey",
+    icon: "pinterest",
+    badge:
+      "https://img.shields.io/badge/Pinterest-%23E60023.svg?logo=Pinterest&logoColor=white",
+  },
+  {
+    label: "Reddit",
+    href: "https://reddit.com/user/u/unreala9",
+    icon: "reddit",
+    badge:
+      "https://img.shields.io/badge/Reddit-%23FF4500.svg?logo=Reddit&logoColor=white",
+  },
+  {
+    label: "X",
+    href: "https://x.com/@shwetchourey1",
+    icon: "twitter",
+    badge: "https://img.shields.io/badge/X-black.svg?logo=X&logoColor=white",
+  },
+  {
+    label: "YouTube",
+    href: "https://youtube.com/@UNREAL A9",
+    icon: "youtube",
+    badge:
+      "https://img.shields.io/badge/YouTube-%23FF0000.svg?logo=YouTube&logoColor=white",
+  },
+  {
+    label: "Email",
+    href: "mailto:shwetchourey3@gmail.com",
+    icon: "mail",
+    badge:
+      "https://img.shields.io/badge/Email-D14836?logo=gmail&logoColor=white",
+  },
 ];
 
 export const SERVICES = [

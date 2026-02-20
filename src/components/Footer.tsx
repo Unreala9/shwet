@@ -2,16 +2,14 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { ArrowUp } from "lucide-react";
 import { NAV_LINKS, SOCIALS, DEVELOPER } from "@/lib/constants";
-import { Github, Linkedin, Twitter, Instagram, Youtube, Mail } from "lucide-react";
-
-const socialIconMap: Record<string, React.ReactNode> = {
-  github: <Github size={16} />,
-  linkedin: <Linkedin size={16} />,
-  twitter: <Twitter size={16} />,
-  instagram: <Instagram size={16} />,
-  youtube: <Youtube size={16} />,
-  mail: <Mail size={16} />,
-};
+import {
+  Github,
+  Linkedin,
+  Twitter,
+  Instagram,
+  Youtube,
+  Mail,
+} from "lucide-react";
 
 const Footer = () => {
   const [time, setTime] = useState("");
@@ -26,7 +24,7 @@ const Footer = () => {
           minute: "2-digit",
           second: "2-digit",
           timeZone: "Asia/Kolkata",
-        }) + " IST"
+        }) + " IST",
       );
     };
     updateTime();
@@ -54,7 +52,8 @@ const Footer = () => {
               SC<span className="text-primary">.</span>
             </div>
             <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
-              Full Stack MERN Developer crafting scalable, performant web experiences.
+              Full Stack MERN Developer crafting scalable, performant web
+              experiences.
             </p>
           </div>
 
@@ -81,7 +80,7 @@ const Footer = () => {
             <p className="text-xs font-mono uppercase tracking-widest text-muted-foreground mb-4">
               Socials
             </p>
-            <div className="flex flex-wrap gap-3 mb-6">
+            <div className="flex flex-wrap gap-2 mb-6">
               {SOCIALS.map((social) => (
                 <a
                   key={social.label}
@@ -89,9 +88,13 @@ const Footer = () => {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.label}
-                  className="w-9 h-9 rounded-lg border border-border/50 flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/40 transition-all duration-200"
+                  className="hover:scale-110 hover:opacity-90 transition-all duration-200"
                 >
-                  {socialIconMap[social.icon]}
+                  <img
+                    src={social.badge}
+                    alt={social.label}
+                    className="h-[22px] rounded-sm"
+                  />
                 </a>
               ))}
             </div>
@@ -108,7 +111,10 @@ const Footer = () => {
             © 2025 {DEVELOPER.name} — Built with React & Framer Motion
           </p>
           <p className="text-xs text-muted-foreground">
-            <a href={`mailto:${DEVELOPER.email}`} className="hover:text-primary transition-colors">
+            <a
+              href={`mailto:${DEVELOPER.email}`}
+              className="hover:text-primary transition-colors"
+            >
               {DEVELOPER.email}
             </a>
           </p>

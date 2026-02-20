@@ -3,17 +3,17 @@ import { motion, useInView } from "framer-motion";
 import { Send } from "lucide-react";
 import { fadeUp } from "@/lib/motion";
 import { DEVELOPER, SOCIALS } from "@/lib/constants";
-import { Github, Linkedin, Twitter, Instagram, Youtube, Mail, Facebook } from "lucide-react";
+import {
+  Github,
+  Linkedin,
+  Twitter,
+  Instagram,
+  Youtube,
+  Mail,
+  Facebook,
+} from "lucide-react";
 
-const socialIconMap: Record<string, React.ReactNode> = {
-  github: <Github size={18} />,
-  linkedin: <Linkedin size={18} />,
-  twitter: <Twitter size={18} />,
-  instagram: <Instagram size={18} />,
-  youtube: <Youtube size={18} />,
-  mail: <Mail size={18} />,
-  facebook: <Facebook size={18} />,
-};
+
 
 const Contact = () => {
   const ref = useRef(null);
@@ -22,7 +22,9 @@ const Contact = () => {
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
     setError("");
   };
@@ -46,12 +48,23 @@ const Contact = () => {
     <section id="contact" className="py-32 px-6 bg-card/20" ref={ref}>
       <div className="max-w-6xl mx-auto">
         <motion.div
-          variants={fadeUp}
-          initial="hidden"
-          animate={inView ? "visible" : "hidden"}
+          initial={{ opacity: 0, filter: "blur(10px)", y: 20 }}
+          animate={
+            inView
+              ? { opacity: 1, filter: "blur(0px)", y: 0 }
+              : { opacity: 0, filter: "blur(10px)", y: 20 }
+          }
+          transition={{ duration: 0.7, ease: "easeOut" }}
           className="mb-16"
         >
-          <span className="section-label">( CONTACT )</span>
+          <motion.span
+            initial={{ opacity: 0, x: -20 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ delay: 0.2, duration: 0.5 }}
+            className="section-label inline-block"
+          >
+            ( CONTACT )
+          </motion.span>
           <h2 className="text-4xl md:text-6xl font-bold mt-4 leading-tight">
             Let's <span className="glow-text">Make It</span> Happen
           </h2>
@@ -70,9 +83,10 @@ const Contact = () => {
           >
             <div className="glass-card p-6">
               <p className="text-muted-foreground leading-relaxed mb-6">
-                I'm currently open to freelance, full-time, and collaborative opportunities.
-                Whether you need a full-stack app built from scratch or want to improve
-                an existing system, reach out — I respond within 24 hours.
+                I'm currently open to freelance, full-time, and collaborative
+                opportunities. Whether you need a full-stack app built from
+                scratch or want to improve an existing system, reach out — I
+                respond within 24 hours.
               </p>
               <a
                 href={`mailto:${DEVELOPER.email}`}
@@ -85,18 +99,25 @@ const Contact = () => {
             {/* Socials */}
             <div>
               <p className="section-label mb-4">Find Me Online</p>
-              <div className="flex flex-wrap gap-3">
+              <div className="flex flex-wrap gap-2">
                 {SOCIALS.map((social) => (
-                  <a
+                  <motion.a
                     key={social.label}
                     href={social.href}
                     target="_blank"
                     rel="noopener noreferrer"
+                    whileHover={{ y: -3, scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 15 }}
                     aria-label={social.label}
-                    className="w-11 h-11 rounded-xl border border-border/60 bg-card/60 flex items-center justify-center text-muted-foreground hover:text-primary hover:border-primary/50 hover:bg-primary/5 transition-all duration-200"
+                    className="hover:shadow-[0_0_15px_rgba(255,255,255,0.1)] transition-all duration-300 rounded"
                   >
-                    {socialIconMap[social.icon]}
-                  </a>
+                    <img
+                      src={social.badge}
+                      alt={social.label}
+                      className="h-7 rounded"
+                    />
+                  </motion.a>
                 ))}
               </div>
             </div>
@@ -119,8 +140,15 @@ const Contact = () => {
                 </p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="glass-card p-6 space-y-4">
-                <div>
+              <form
+                onSubmit={handleSubmit}
+                className="glass-card p-6 space-y-4"
+              >
+                <motion.div
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={inView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ delay: 0.2, duration: 0.4 }}
+                >
                   <label className="text-xs font-mono text-muted-foreground uppercase tracking-wider mb-2 block">
                     Name
                   </label>
@@ -130,10 +158,14 @@ const Contact = () => {
                     onChange={handleChange}
                     placeholder="Your name"
                     maxLength={100}
-                    className="w-full bg-secondary/40 border border-border/50 rounded-xl px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/50 focus:bg-primary/5 transition-all duration-200"
+                    className="w-full bg-secondary/40 border border-border/50 rounded-xl px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/50 focus:bg-primary/5 transition-all duration-200 focus:scale-[1.01]"
                   />
-                </div>
-                <div>
+                </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={inView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ delay: 0.3, duration: 0.4 }}
+                >
                   <label className="text-xs font-mono text-muted-foreground uppercase tracking-wider mb-2 block">
                     Email
                   </label>
@@ -144,10 +176,14 @@ const Contact = () => {
                     onChange={handleChange}
                     placeholder="your@email.com"
                     maxLength={255}
-                    className="w-full bg-secondary/40 border border-border/50 rounded-xl px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/50 focus:bg-primary/5 transition-all duration-200"
+                    className="w-full bg-secondary/40 border border-border/50 rounded-xl px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/50 focus:bg-primary/5 transition-all duration-200 focus:scale-[1.01]"
                   />
-                </div>
-                <div>
+                </motion.div>
+                <motion.div
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={inView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ delay: 0.4, duration: 0.4 }}
+                >
                   <label className="text-xs font-mono text-muted-foreground uppercase tracking-wider mb-2 block">
                     Message
                   </label>
@@ -158,14 +194,35 @@ const Contact = () => {
                     placeholder="Tell me about your project or idea..."
                     rows={5}
                     maxLength={1000}
-                    className="w-full bg-secondary/40 border border-border/50 rounded-xl px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/50 focus:bg-primary/5 transition-all duration-200 resize-none"
+                    className="w-full bg-secondary/40 border border-border/50 rounded-xl px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 focus:outline-none focus:border-primary/50 focus:bg-primary/5 transition-all duration-200 resize-none focus:scale-[1.01]"
                   />
-                </div>
+                </motion.div>
                 {error && <p className="text-destructive text-xs">{error}</p>}
-                <button type="submit" className="btn-primary w-full flex items-center justify-center gap-2">
-                  <Send size={15} />
-                  Get a Quote
-                </button>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={inView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ delay: 0.5, duration: 0.4 }}
+                >
+                  <motion.button
+                    type="submit"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="btn-primary w-full flex items-center justify-center gap-2 group overflow-hidden relative shadow-[0_0_20px_rgba(255,255,255,0.0)] hover:shadow-[0_0_20px_rgba(255,255,255,0.1)] transition-all duration-300"
+                  >
+                    <span className="absolute inset-0 w-full h-full bg-white/20 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out" />
+                    <motion.div
+                      animate={{ x: [0, 4, 0] }}
+                      transition={{ repeat: Infinity, duration: 1.5 }}
+                    >
+                      <Send
+                        size={15}
+                        className="group-hover:rotate-12 transition-transform duration-300"
+                      />
+                    </motion.div>
+                    Get a Quote
+                  </motion.button>
+                </motion.div>
               </form>
             )}
           </motion.div>

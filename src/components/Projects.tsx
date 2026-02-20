@@ -43,12 +43,16 @@ const ProjectCard = ({
       style={{ top: `${topOffset}px`, zIndex: i + 1 }}
     >
       <motion.div
-        initial={{ opacity: 0, y: 70, scale: 0.96 }}
-        whileInView={{ opacity: 1, y: 0, scale: 1 }}
+        initial={{ opacity: 0, y: 70, scale: 0.96, filter: "blur(5px)" }}
+        whileInView={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
         viewport={{ once: true, margin: "-60px" }}
-        transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1], delay: i * 0.07 }}
-        whileHover={{ y: -5, transition: { type: "spring", stiffness: 260, damping: 22 } }}
-        className="project-card flex flex-col md:flex-row gap-0 overflow-hidden rounded-2xl"
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: i * 0.05 }}
+        whileHover={{
+          y: -5,
+          scale: 1.01,
+          transition: { type: "spring", stiffness: 260, damping: 22 },
+        }}
+        className="project-card group flex flex-col md:flex-row gap-0 overflow-hidden rounded-2xl hover:shadow-[0_0_30px_rgba(255,255,255,0.03)] border border-transparent hover:border-white/10 transition-all duration-500"
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
@@ -56,12 +60,16 @@ const ProjectCard = ({
         <div className="flex-1 flex flex-col p-6">
           {/* Top row */}
           <div className="flex items-center justify-between mb-4">
-            <span className="section-label text-[10px]">{project.category}</span>
-            <span className="text-xs text-muted-foreground font-mono">{project.year}</span>
+            <span className="section-label text-[10px] bg-primary/10 px-2 py-1 rounded-md">
+              {project.category}
+            </span>
+            <span className="text-xs text-muted-foreground font-mono bg-white/5 px-2 py-1 rounded-md border border-white/5">
+              {project.year}
+            </span>
           </div>
 
           {/* Project number */}
-          <div className="text-6xl font-bold text-border/30 font-mono leading-none mb-3">
+          <div className="text-6xl font-bold text-border/30 font-mono leading-none mb-3 transition-all duration-500 group-hover:text-primary/20 group-hover:translate-x-2 group-hover:-translate-y-1">
             {String(i + 1).padStart(2, "0")}
           </div>
 
@@ -156,14 +164,24 @@ const Projects = () => {
   return (
     <section id="projects" className="py-32 px-6 bg-card/20">
       <div className="max-w-6xl mx-auto" ref={ref}>
-        {/* Header */}
         <motion.div
-          variants={fadeUp}
-          initial="hidden"
-          animate={inView ? "visible" : "hidden"}
+          initial={{ opacity: 0, filter: "blur(10px)", y: 20 }}
+          animate={
+            inView
+              ? { opacity: 1, filter: "blur(0px)", y: 0 }
+              : { opacity: 0, filter: "blur(10px)", y: 20 }
+          }
+          transition={{ duration: 0.7, ease: "easeOut" }}
           className="mb-16"
         >
-          <span className="section-label">( PROJECTS )</span>
+          <motion.span
+            initial={{ opacity: 0, x: -20 }}
+            animate={inView ? { opacity: 1, x: 0 } : {}}
+            transition={{ delay: 0.2, duration: 0.5 }}
+            className="section-label inline-block"
+          >
+            ( PROJECTS )
+          </motion.span>
           <h2 className="text-4xl md:text-6xl font-bold mt-4 leading-tight">
             Selected <span className="glow-text">Works</span>
           </h2>
