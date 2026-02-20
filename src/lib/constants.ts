@@ -29,7 +29,7 @@ export const SOCIALS = [
   },
   {
     label: "Facebook",
-    href: "https://facebook.com/Shwet Chourey",
+    href: "https://facebook.com/ShwetChourey",
     icon: "facebook",
     badge:
       "https://img.shields.io/badge/Facebook-%231877F2.svg?logo=Facebook&logoColor=white",
@@ -43,7 +43,7 @@ export const SOCIALS = [
   },
   {
     label: "LinkedIn",
-    href: "https://linkedin.com/in/Shwet Chourey",
+    href: "https://www.linkedin.com/in/shwet-chourey-3b004722a",
     icon: "linkedin",
     badge:
       "https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white",
