@@ -1,16 +1,162 @@
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
-import { ExternalLink, Github } from "lucide-react";
-import { staggerContainer, staggerItem, fadeUp } from "@/lib/motion";
+import { useRef, useState } from "react";
+import { motion, useInView, useScroll, useTransform } from "framer-motion";
+import { ExternalLink, Github, Play } from "lucide-react";
+import { fadeUp } from "@/lib/motion";
 import { PROJECTS } from "@/lib/constants";
 
+const ProjectCard = ({
+  project,
+  i,
+  total,
+}: {
+  project: (typeof PROJECTS)[0];
+  i: number;
+  total: number;
+}) => {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [isHovered, setIsHovered] = useState(false);
+
+  // Each card sticks at a progressively lower top value so they fan out
+  const topOffset = 80 + i * 24; // px from viewport top when sticky kicks in
+
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+    if (videoRef.current) {
+      videoRef.current.currentTime = 0;
+      videoRef.current.play().catch(() => {});
+    }
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+    if (videoRef.current) {
+      videoRef.current.pause();
+      videoRef.current.currentTime = 0;
+    }
+  };
+
+  return (
+    <div
+      ref={cardRef}
+      className="sticky"
+      style={{ top: `${topOffset}px`, zIndex: i + 1 }}
+    >
+      <motion.div
+        initial={{ opacity: 0, y: 70, scale: 0.96 }}
+        whileInView={{ opacity: 1, y: 0, scale: 1 }}
+        viewport={{ once: true, margin: "-60px" }}
+        transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1], delay: i * 0.07 }}
+        whileHover={{ y: -5, transition: { type: "spring", stiffness: 260, damping: 22 } }}
+        className="project-card flex flex-col md:flex-row gap-0 overflow-hidden rounded-2xl"
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
+        {/* ── Left: Content ── */}
+        <div className="flex-1 flex flex-col p-6">
+          {/* Top row */}
+          <div className="flex items-center justify-between mb-4">
+            <span className="section-label text-[10px]">{project.category}</span>
+            <span className="text-xs text-muted-foreground font-mono">{project.year}</span>
+          </div>
+
+          {/* Project number */}
+          <div className="text-6xl font-bold text-border/30 font-mono leading-none mb-3">
+            {String(i + 1).padStart(2, "0")}
+          </div>
+
+          {/* Name + description */}
+          <h3 className="text-xl font-bold mb-2">{project.name}</h3>
+          <p className="text-sm text-muted-foreground leading-relaxed mb-6 flex-1">
+            {project.description}
+          </p>
+
+          {/* Links */}
+          <div className="flex items-center gap-4">
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 text-xs text-muted-foreground hover:text-primary transition-colors"
+            >
+              <Github size={13} />
+              Code
+            </a>
+            {project.live !== "#" && (
+              <a
+                href={project.live}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 text-xs text-muted-foreground hover:text-primary transition-colors"
+              >
+                <ExternalLink size={13} />
+                Live Site
+              </a>
+            )}
+            <div className="ml-auto w-8 h-8 rounded-full border border-border/40 flex items-center justify-center hover:border-primary/50 hover:bg-primary/5 transition-all">
+              <ExternalLink size={12} className="text-muted-foreground" />
+            </div>
+          </div>
+        </div>
+
+        {/* ── Right: Media Panel ── */}
+        <div className="relative w-full md:w-[320px] lg:w-[380px] shrink-0 overflow-hidden bg-black min-h-[200px] md:min-h-0 rounded-b-2xl md:rounded-r-2xl md:rounded-bl-none">
+          {/* Thumbnail */}
+          <img
+            src={project.image}
+            alt={project.name}
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
+              isHovered ? "opacity-0" : "opacity-100"
+            }`}
+          />
+
+          {/* Video */}
+          {project.video && (
+            <video
+              ref={videoRef}
+              src={project.video}
+              muted
+              loop
+              playsInline
+              preload="metadata"
+              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-500 ${
+                isHovered ? "opacity-100" : "opacity-0"
+              }`}
+            />
+          )}
+
+          {/* Play badge — shows when NOT hovered */}
+          <div
+            className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 ${
+              isHovered ? "opacity-0" : "opacity-100"
+            }`}
+          >
+            <div className="w-11 h-11 rounded-full bg-black/50 backdrop-blur-sm border border-white/20 flex items-center justify-center">
+              <Play size={16} className="text-white fill-white ml-0.5" />
+            </div>
+          </div>
+
+          {/* Gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-l from-transparent to-black/20 hidden md:block" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent md:hidden" />
+        </div>
+      </motion.div>
+    </div>
+  );
+};
+
+/* ─── Section ─── */
 const Projects = () => {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
+  // Extra bottom padding so the last card can fully scroll into view before un-sticking
+  const stackPadding = PROJECTS.length * 24;
+
   return (
     <section id="projects" className="py-32 px-6 bg-card/20">
       <div className="max-w-6xl mx-auto" ref={ref}>
+        {/* Header */}
         <motion.div
           variants={fadeUp}
           initial="hidden"
@@ -26,67 +172,19 @@ const Projects = () => {
           </p>
         </motion.div>
 
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          animate={inView ? "visible" : "hidden"}
-          className="grid md:grid-cols-2 lg:grid-cols-3 gap-5"
+        <div
+          className="flex flex-col gap-5"
+          style={{ paddingBottom: `${stackPadding}px` }}
         >
           {PROJECTS.map((project, i) => (
-            <motion.div
+            <ProjectCard
               key={project.name}
-              variants={staggerItem}
-              whileHover={{ y: -4, rotateX: 2 }}
-              className="project-card"
-            >
-              {/* Top row */}
-              <div className="flex items-center justify-between mb-4">
-                <span className="section-label text-[10px]">{project.category}</span>
-                <span className="text-xs text-muted-foreground font-mono">{project.year}</span>
-              </div>
-
-              {/* Project number */}
-              <div className="text-6xl font-bold text-border/30 font-mono leading-none mb-3">
-                {String(i + 1).padStart(2, "0")}
-              </div>
-
-              {/* Name */}
-              <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
-                {project.name}
-              </h3>
-              <p className="text-sm text-muted-foreground leading-relaxed mb-6">
-                {project.description}
-              </p>
-
-              {/* Links */}
-              <div className="flex items-center gap-3 mt-auto">
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 text-xs text-muted-foreground hover:text-primary transition-colors"
-                >
-                  <Github size={13} />
-                  Code
-                </a>
-                {project.live !== "#" && (
-                  <a
-                    href={project.live}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-1.5 text-xs text-muted-foreground hover:text-primary transition-colors"
-                  >
-                    <ExternalLink size={13} />
-                    Live
-                  </a>
-                )}
-                <div className="ml-auto w-8 h-8 rounded-full border border-border/40 flex items-center justify-center group-hover:border-primary/50 group-hover:bg-primary/5 transition-all">
-                  <ExternalLink size={12} className="text-muted-foreground group-hover:text-primary transition-colors" />
-                </div>
-              </div>
-            </motion.div>
+              project={project}
+              i={i}
+              total={PROJECTS.length}
+            />
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

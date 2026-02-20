@@ -1,7 +1,8 @@
 export const DEVELOPER = {
   name: "Shwet Chourey",
   title: "Full Stack MERN Developer",
-  tagline: "I craft scalable web experiences that blend performance, usability, and clean architecture.",
+  tagline:
+    "I craft scalable web experiences that blend performance, usability, and clean architecture.",
   email: "shwetchourey3@gmail.com",
   phone: "+919343418163",
   availability: "Open for Opportunities 2026",
@@ -20,9 +21,17 @@ export const NAV_LINKS = [
 
 export const SOCIALS = [
   { label: "GitHub", href: "https://github.com/Unreala9", icon: "github" },
-  { label: "LinkedIn", href: "https://linkedin.com/in/ShwetChourey", icon: "linkedin" },
+  {
+    label: "LinkedIn",
+    href: "https://linkedin.com/in/ShwetChourey",
+    icon: "linkedin",
+  },
   { label: "X", href: "https://x.com/@shwetchourey1", icon: "twitter" },
-  { label: "Instagram", href: "https://instagram.com/ii__shwet__ii", icon: "instagram" },
+  {
+    label: "Instagram",
+    href: "https://instagram.com/ii__shwet__ii",
+    icon: "instagram",
+  },
   { label: "YouTube", href: "https://youtube.com/@UNREALA9", icon: "youtube" },
   { label: "Email", href: "mailto:shwetchourey3@gmail.com", icon: "mail" },
 ];
@@ -56,63 +65,98 @@ export const PROJECTS = [
     category: "Real Estate Platform",
     name: "Waman Haus",
     year: "2024",
-    description: "A modern real estate listing and showcase platform with dynamic property views.",
-    github: "https://github.com/Unreala9",
-    live: "#",
+    description:
+      "A modern real estate listing and showcase platform with dynamic property views.",
+    github: "https://github.com/UnrealA10/waman",
+    live: "https://wamanhaus.com",
+    image:
+      "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&q=80",
+    video: "https://www.w3schools.com/html/mov_bbb.mp4",
   },
   {
     category: "Automation Tool",
     name: "Telegram Bot Dashboard",
     year: "2024",
-    description: "Admin dashboard to manage and monitor Telegram bots with real-time controls.",
-    github: "https://github.com/Unreala9",
+    description:
+      "Admin dashboard to manage and monitor Telegram bots with real-time controls.",
+    github: "https://github.com/UnrealA10/bot-dashboard",
     live: "#",
+    image:
+      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
+    video: "https://www.w3schools.com/html/mov_bbb.mp4",
   },
   {
     category: "Sports Platform",
     name: "Ankur Cricket",
     year: "2023",
-    description: "Cricket management and scoring application for local leagues and tournaments.",
-    github: "https://github.com/Unreala9",
+    description:
+      "Cricket management and scoring application for local leagues and tournaments.",
+    github: "https://github.com/Unreala9/ankur-cricket",
     live: "#",
+    image:
+      "https://images.unsplash.com/photo-1531415074968-036ba1b575da?w=800&q=80",
+    video: "https://www.w3schools.com/html/mov_bbb.mp4",
   },
   {
     category: "Fintech App",
     name: "Onetapay",
     year: "2024",
-    description: "One-tap payment solution with streamlined UX and secure transaction flows.",
-    github: "https://github.com/Unreala9",
+    description:
+      "One-tap payment solution with streamlined UX and secure transaction flows.",
+    github: "https://github.com/Unreala9/Onetapay-MetaProject",
     live: "#",
+    image:
+      "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&q=80",
+    video: "https://www.w3schools.com/html/mov_bbb.mp4",
   },
   {
     category: "Education Platform",
     name: "MDB School",
     year: "2023",
-    description: "School management system with student portals, attendance, and result tracking.",
-    github: "https://github.com/Unreala9",
-    live: "#",
+    description:
+      "School management system with student portals, attendance, and result tracking.",
+    github: "https://github.com/Unreala9/Mdb",
+    live: "https://mdbschool.com",
+    image:
+      "https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=800&q=80",
+    video: "https://www.w3schools.com/html/mov_bbb.mp4",
   },
   {
     category: "CRM System",
     name: "MetaBull CRM",
     year: "2024",
-    description: "Customer relationship management platform built for the MetaBull Universe ecosystem.",
+    description:
+      "Customer relationship management platform built for the MetaBull Universe ecosystem.",
     github: "https://github.com/MetaBull-Universe/metabull-universe-crm-main",
     live: "#",
+    image:
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
+    video: "https://www.w3schools.com/html/mov_bbb.mp4",
   },
   {
     category: "Dev Tool",
     name: "Landing Page Handler",
     year: "2024",
-    description: "Automation tool to spin up, manage, and deploy multiple landing pages efficiently.",
+    description:
+      "Automation tool to spin up, manage, and deploy multiple landing pages efficiently.",
     github: "https://github.com/UnrealA10/landing-page-handler",
     live: "#",
+    image:
+      "https://images.unsplash.com/photo-1547658719-da2b51169166?w=800&q=80",
+    video: "https://www.w3schools.com/html/mov_bbb.mp4",
   },
 ];
 
 export const SKILLS = {
   Languages: ["C++", "C", "JavaScript", "TypeScript", "Python", "Java"],
-  Frontend: ["React.js", "Next.js", "Tailwind CSS", "Bootstrap", "HTML5", "CSS3"],
+  Frontend: [
+    "React.js",
+    "Next.js",
+    "Tailwind CSS",
+    "Bootstrap",
+    "HTML5",
+    "CSS3",
+  ],
   Backend: ["Node.js", "Express", "MongoDB", "PostgreSQL", "Supabase"],
   Tools: ["Git", "GitHub", "VS Code", "Netlify", "Vercel", "Cloudflare"],
   Design: ["Figma", "Canva", "Responsive Design", "Component UI"],

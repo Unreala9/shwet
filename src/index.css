@@ -6,52 +6,53 @@
 
 @layer base {
   :root {
-    /* Dark portfolio design system */
-    --background: 220 13% 8%;
-    --foreground: 210 20% 95%;
+    /* Monochrome black/white/gray portfolio design system */
+    --background: 0 0% 5%;
+    --foreground: 0 0% 95%;
 
-    --card: 220 13% 11%;
-    --card-foreground: 210 20% 95%;
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 95%;
 
-    --popover: 220 13% 11%;
-    --popover-foreground: 210 20% 95%;
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 95%;
 
-    --primary: 158 64% 52%;
-    --primary-foreground: 220 13% 8%;
+    /* Primary = bright white/light gray (the accent) */
+    --primary: 0 0% 90%;
+    --primary-foreground: 0 0% 5%;
 
-    --secondary: 220 13% 14%;
-    --secondary-foreground: 210 20% 80%;
+    --secondary: 0 0% 12%;
+    --secondary-foreground: 0 0% 70%;
 
-    --muted: 220 13% 13%;
-    --muted-foreground: 215 15% 50%;
+    --muted: 0 0% 10%;
+    --muted-foreground: 0 0% 45%;
 
-    --accent: 158 64% 52%;
-    --accent-foreground: 220 13% 8%;
+    --accent: 0 0% 90%;
+    --accent-foreground: 0 0% 5%;
 
     --destructive: 0 72% 51%;
-    --destructive-foreground: 210 20% 95%;
+    --destructive-foreground: 0 0% 95%;
 
-    --border: 220 13% 18%;
-    --input: 220 13% 16%;
-    --ring: 158 64% 52%;
+    --border: 0 0% 15%;
+    --input: 0 0% 12%;
+    --ring: 0 0% 60%;
 
     --radius: 0.75rem;
 
     /* Custom tokens */
-    --glow: 158 64% 52%;
-    --surface: 220 13% 11%;
-    --surface-elevated: 220 13% 14%;
-    --text-dim: 215 15% 50%;
+    --glow: 0 0% 90%;
+    --surface: 0 0% 8%;
+    --surface-elevated: 0 0% 12%;
+    --text-dim: 0 0% 45%;
 
     /* Sidebar */
-    --sidebar-background: 220 13% 8%;
-    --sidebar-foreground: 210 20% 95%;
-    --sidebar-primary: 158 64% 52%;
-    --sidebar-primary-foreground: 220 13% 8%;
-    --sidebar-accent: 220 13% 14%;
-    --sidebar-accent-foreground: 210 20% 95%;
-    --sidebar-border: 220 13% 18%;
-    --sidebar-ring: 158 64% 52%;
+    --sidebar-background: 0 0% 5%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 0 0% 90%;
+    --sidebar-primary-foreground: 0 0% 5%;
+    --sidebar-accent: 0 0% 12%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 0 0% 15%;
+    --sidebar-ring: 0 0% 60%;
   }
 }
 
@@ -87,7 +88,7 @@
 
   .glow-text {
     color: hsl(var(--primary));
-    text-shadow: 0 0 30px hsl(var(--primary) / 0.4);
+    text-shadow: 0 0 40px hsl(var(--primary) / 0.25), 0 0 80px hsl(var(--primary) / 0.10);
   }
 
   .section-label {
@@ -96,7 +97,7 @@
 
   .skill-pill {
     @apply px-3 py-1.5 text-sm rounded-full border border-border/60 bg-card text-foreground/80
-      hover:border-primary/60 hover:text-primary hover:bg-primary/5 transition-all duration-200 cursor-default;
+      hover:border-primary/60 hover:text-primary hover:bg-white/5 transition-all duration-200 cursor-default;
   }
 
   .nav-link {
@@ -109,17 +110,17 @@
 
   .btn-primary {
     @apply px-6 py-3 bg-primary text-primary-foreground rounded-full font-semibold text-sm
-      hover:bg-primary/90 hover:shadow-[0_0_30px_hsl(var(--primary)/0.4)] transition-all duration-300;
+      hover:bg-white hover:shadow-[0_0_30px_hsl(0_0%_90%/0.25)] transition-all duration-300;
   }
 
   .project-card {
     @apply glass-card p-6 cursor-pointer overflow-hidden
-      hover:border-primary/40 hover:shadow-[0_0_40px_hsl(var(--primary)/0.08)] transition-all duration-300;
+      hover:border-primary/40 hover:shadow-[0_0_40px_hsl(0_0%_90%/0.05)] transition-all duration-300;
   }
 
   .service-card {
     @apply glass-card p-8
-      hover:border-primary/40 hover:shadow-[0_0_40px_hsl(var(--primary)/0.1)] hover:-translate-y-1 transition-all duration-300;
+      hover:border-primary/40 hover:shadow-[0_0_40px_hsl(0_0%_90%/0.06)] hover:-translate-y-1 transition-all duration-300;
   }
 }
 
@@ -131,10 +132,9 @@
   background: hsl(var(--background));
 }
 ::-webkit-scrollbar-thumb {
-  background: hsl(var(--primary) / 0.4);
+  background: hsl(var(--primary) / 0.3);
   border-radius: 2px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(var(--primary) / 0.7);
+  background: hsl(var(--primary) / 0.6);
 }
-
