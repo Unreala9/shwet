@@ -49,10 +49,29 @@ const TECH_LOGOS: Record<string, string> = {
     "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg",
   Canva:
     "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/canva/canva-original.svg",
+  WordPress:
+    "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-plain.svg",
+  Hostinger: "https://cdn.simpleicons.org/hostinger",
+  cPanel: "https://cdn.simpleicons.org/cpanel",
+  GSAP: "https://cdn.simpleicons.org/greensock",
+  "Locomotive.js":
+    "https://imgs.search.brave.com/a2fWFEe1Nc-XR_HQNdUTQDQY2UftTrUkA91wm0ZRKN0/rs:fit:200:200:1:0/g:ce/aHR0cHM6Ly9naXRo/dWIuY29tL2xvY29t/b3RpdmVtdGwucG5n",
+  MySQL:
+    "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg",
+  "React Native":
+    "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+  "Expo Go": "https://imgs.search.brave.com/2sHpsoqh_D8hvA2Zfcwn8kSeoP7fn80aURaDXjDzE50/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9wbGF5/LWxoLmdvb2dsZXVz/ZXJjb250ZW50LmNv/bS9hbGdzbXVoaXRs/eUNVX1l5M0lVNy03/S1lJaENCd3g1VUpH/NEJsbi1oeWdCamps/VVZDaUdvMXk4VzVK/TnFZbTlXVzNzPXcy/NTY",
 };
 
 // Skills that have dark/black logos — invert them on the dark bg
-const DARK_LOGOS = new Set(["GitHub", "Vercel", "Next.js", "Express"]);
+const DARK_LOGOS = new Set([
+  "GitHub",
+  "Vercel",
+  "Next.js",
+  "Express",
+  "WordPress",
+  "Expo Go",
+]);
 
 const SKILLS: { category: string; items: string[] }[] = [
   {
@@ -67,16 +86,30 @@ const SKILLS: { category: string; items: string[] }[] = [
       "HTML5",
       "CSS3",
       "Tailwind CSS",
+      "React Native",
       "Bootstrap",
+      "GSAP",
+      "Locomotive.js",
     ],
   },
   {
     category: "Backend",
-    items: ["Node.js", "Express", "MongoDB", "PostgreSQL", "Supabase"],
+    items: ["Node.js", "Express", "MongoDB", "PostgreSQL", "MySQL", "Supabase"],
   },
   {
     category: "Tools",
-    items: ["Git", "GitHub", "VS Code", "Vercel", "Netlify", "Cloudflare"],
+    items: [
+      "Git",
+      "GitHub",
+      "VS Code",
+      "Vercel",
+      "Netlify",
+      "Cloudflare",
+      "Hostinger",
+      "Expo Go",
+      "cPanel",
+      "WordPress",
+    ],
   },
   { category: "Design", items: ["Figma", "Canva"] },
 ];
@@ -206,7 +239,7 @@ const Skills = () => {
   const inView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="skills" className="py-32 px-6">
+    <section id="skills" className="pt-10 pb-32 px-6">
       <div className="max-w-6xl mx-auto" ref={ref}>
         {/* Header */}
         <motion.div

@@ -29,7 +29,7 @@ export const SOCIALS = [
   },
   {
     label: "Facebook",
-    href: "https://facebook.com/ShwetChourey",
+    href: "https://www.facebook.com/profile.php?id=100071934237069",
     icon: "facebook",
     badge:
       "https://img.shields.io/badge/Facebook-%231877F2.svg?logo=Facebook&logoColor=white",
@@ -57,7 +57,7 @@ export const SOCIALS = [
   },
   {
     label: "Reddit",
-    href: "https://reddit.com/user/u/unreala9",
+    href: "https://www.reddit.com/user/unreala9/",
     icon: "reddit",
     badge:
       "https://img.shields.io/badge/Reddit-%23FF4500.svg?logo=Reddit&logoColor=white",
@@ -70,7 +70,7 @@ export const SOCIALS = [
   },
   {
     label: "YouTube",
-    href: "https://youtube.com/@UNREAL A9",
+    href: "https://www.youtube.com/@shwet_chourey",
     icon: "youtube",
     badge:
       "https://img.shields.io/badge/YouTube-%23FF0000.svg?logo=YouTube&logoColor=white",
@@ -131,17 +131,17 @@ export const PROJECTS = [
     image: "./image/bot.png",
     video: "./video/bot.mp4",
   },
-  {
-    category: "Sports Platform",
-    name: "Ankur Cricket",
-    year: "2023",
-    description:
-      "Cricket management and scoring application for local leagues and tournaments.",
-    github: "https://github.com/Unreala9/ankur-cricket",
-    live: "https://steelblue-ram-975394.hostingersite.com/",
-    image: "./image/ankur.png",
-    video: "./video/ankur.mp4",
-  },
+  // {
+  //   category: "Sports Platform",
+  //   name: "Ankur Cricket",
+  //   year: "2023",
+  //   description:
+  //     "Cricket management and scoring application for local leagues and tournaments.",
+  //   github: "https://github.com/Unreala9/ankur-cricket",
+  //   live: "https://steelblue-ram-975394.hostingersite.com/",
+  //   image: "./image/ankur.png",
+  //   video: "./video/ankur.mp4",
+  // },
   {
     category: "Fintech App",
     name: "Onetapay",
@@ -192,14 +192,28 @@ export const SKILLS = {
   Languages: ["C++", "C", "JavaScript", "TypeScript", "Python", "Java"],
   Frontend: [
     "React.js",
+    "React Native",
+    "Expo Go",
     "Next.js",
     "Tailwind CSS",
     "Bootstrap",
     "HTML5",
     "CSS3",
+    "GSAP",
+    "Locomotive.js",
   ],
-  Backend: ["Node.js", "Express", "MongoDB", "PostgreSQL", "Supabase"],
-  Tools: ["Git", "GitHub", "VS Code", "Netlify", "Vercel", "Cloudflare"],
+  Backend: ["Node.js", "Express", "MongoDB", "PostgreSQL", "MySQL", "Supabase"],
+  Tools: [
+    "Git",
+    "GitHub",
+    "VS Code",
+    "Netlify",
+    "Vercel",
+    "Cloudflare",
+    "Hostinger",
+    "cPanel",
+    "WordPress",
+  ],
   Design: ["Figma", "Canva", "Responsive Design", "Component UI"],
 };
 
