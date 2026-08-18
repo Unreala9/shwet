@@ -109,83 +109,9 @@ export const SERVICES = [
 ];
 
 export const PROJECTS = [
-  {
-    category: "Real Estate Platform",
-    name: "Waman Haus",
-    year: "2024",
-    description:
-      "A modern real estate listing and showcase platform with dynamic property views.",
-    github: "https://github.com/UnrealA10/waman",
-    live: "https://wamanhaus.com",
-    image: "./image/waman.png",
-    video: "./video/waman.mp4",
-  },
-  {
-    category: "Automation Tool",
-    name: "Telegram Bot Dashboard",
-    year: "2024",
-    description:
-      "Admin dashboard to manage and monitor Telegram bots with real-time controls.",
-    github: "https://github.com/UnrealA10/bot-dashboard",
-    live: "https://getaipilot.in/",
-    image: "./image/bot.png",
-    video: "./video/bot.mp4",
-  },
-  // {
-  //   category: "Sports Platform",
-  //   name: "Ankur Cricket",
-  //   year: "2023",
-  //   description:
-  //     "Cricket management and scoring application for local leagues and tournaments.",
-  //   github: "https://github.com/Unreala9/ankur-cricket",
-  //   live: "https://steelblue-ram-975394.hostingersite.com/",
-  //   image: "./image/ankur.png",
-  //   video: "./video/ankur.mp4",
-  // },
-  {
-    category: "Fintech App",
-    name: "Onetapay",
-    year: "2024",
-    description:
-      "One-tap payment solution with streamlined UX and secure transaction flows.",
-    github: "https://github.com/Unreala9/Onetapay-MetaProject",
-    live: "https://onetapay.metabulluniverse.in/",
-    image: "./image/one.png",
-    video: "./video/one.mp4",
-  },
-  {
-    category: "Education Platform",
-    name: "MDB School",
-    year: "2023",
-    description:
-      "School management system with student portals, attendance, and result tracking.",
-    github: "https://github.com/Unreala9/Mdb",
-    live: "https://mdbschool.com",
-    image: "./image/mdb.png",
-    video: "./video/mdb.mp4",
-  },
-  {
-    category: "CRM System",
-    name: "MetaBull CRM",
-    year: "2024",
-    description:
-      "Customer relationship management platform built for the MetaBull Universe ecosystem.",
-    github: "https://github.com/MetaBull-Universe/metabull-universe-crm-main",
-    live: "https://team.metabulluniverse.com",
-    image: "./image/crm.png",
-    video: "./video/crm.mp4",
-  },
-  {
-    category: "Dev Tool",
-    name: "Landing Page Handler",
-    year: "2024",
-    description:
-      "Automation tool to spin up, manage, and deploy multiple landing pages efficiently.",
-    github: "https://github.com/UnrealA10/landing-page-handler",
-    live: "https://adsmint.site",
-    image: "./image/ads.png",
-    video: "./video/ads.mp4",
-  },
+
+
+
 ];
 
 export const SKILLS = {
